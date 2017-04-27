@@ -1,0 +1,36 @@
+# Project Design Writeup and Approval Template
+
+### Project Problem and Hypothesis
+* What line item settings contribute to conversion incrementality via ghost bidding? What are the most important optimization levers for driving incremental subscriptions? I'm going to use regression modeling to see which features in online media buying contribute to incremental subscriptions for Netflix. I want to know how much specific features contribute to incremental conversions by using a linear regression model, and I want to create a model to predict if a user will convert based on line item settings (bid, frequency, placement, creative) in the line item where users were exposed.
+
+* Having the ability to identify significant signals of incrementality could have a huge impact on media buying methodology. Ideally, findings from modeling exercises as these could be built into media buying algorithms that could optimize by maximizing incrementality. 
+
+### Datasets
+* Line Item Settings for Netflix. xbid_fe_ui.XbidLineItems full schema () - Available via Google BigQuery 
+* Ghost bid data from Netflix. full schema () - Available via Google BigQuery
+
+### Domain knowledge
+* Data Scientists at Google and Netflix have tried, and succeeded, in building models like these. I'm trying to make my models more scalable and automated by taking advantage of CoLab - a jupyter notebook-like product from Google. My goal is to have this analysis done in a way that promotes repeatability and scalability. Ideally, a colleague could duplicate my CoLab document, change some internal IDs, and run the same analysis immediately. 
+
+* Other models haven't looked at incrementality, they've only looked at which media buying features lead to conversion. 
+
+### Project Concerns
+* I'm a little unsure about adding incrementality into the mix because it blurs the lines between logistic and linear regressions for me. It's like I'm trying to predict something (a conversion) and another thing (whether or not it was incremental) but still want coefficient values for features that are easily understood and explained.
+* Assumptions to this problem are that online advertising influences subscription behavior at all and that the influence is significant. 
+* I wish I could get lifetime value of subscribers from Netflix. That way I could see media buying features that influence long term subscription vs. short term subscription. 
+* If my model is wrong, there won't be a compelling reason for spending money on online advertising (which is my livelihood). The good news is, I don't necessarily have to share this with the client. It's very unlikely that the data I'll be using is incorrect - what could be incorrect is how I prepare and organize that data. 
+
+### Outcomes
+* What do you expect the output to look like?
+    - I think there will be a few features in media buying models that lead to incrementality. 
+* What does your target audience expect the output to look like?
+    - They'd expect to be able to identify and quantify what changes to media buying setup will make to overall incremental subs. 
+* What gain do you expect from your most important feature on its own?
+    - I think the most important feature will account for about half of any explained influence in subscription incrementality. I think that will be ad viewability (as measured by a viewability %) or frequency (# of times a user saw an ad). 
+* How complicated does your model have to be?
+    - Not very. There are hundreds of potential features to the model so narrowing those down to <5 or 10 will be crucial. 
+* How successful does your project have to be in order to be considered a "success"?
+    - It just needs to be statistically significant. If I can say, with statistical significance, that increasing bid price, viewability % or frequency leads to more incremental conversions then it's a success. If the process and the model show anything to be significant in predicting subscription incrementality then it'll be a success. 
+* What will you do if the project is a bust (this happens! but it shouldn't here)?
+    - Keep it to myself (and the class) and explore what I could have changed to make it not be a bust. 
+
